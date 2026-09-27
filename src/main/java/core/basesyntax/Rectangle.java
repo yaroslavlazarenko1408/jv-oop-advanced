@@ -1,10 +1,10 @@
 package core.basesyntax;
 
 public class Rectangle extends Figure {
-    private int firstSide;
-    private int secondSide;
+    private double firstSide;
+    private double secondSide;
 
-    public Rectangle(int firstSide, int secondSide, String color) {
+    public Rectangle(String color, double firstSide, double secondSide) {
         super(color);
         this.firstSide = firstSide;
         this.secondSide = secondSide;
@@ -20,6 +20,6 @@ public class Rectangle extends Figure {
         System.out.println("Figure: rectangle, area: " + getArea()
                 + " sq. units, firstSide: " + firstSide
                 + " units, secondSide: " + secondSide
-                + " units, color: " + color);
+                + " units, color: " + getColor());
     }
 }

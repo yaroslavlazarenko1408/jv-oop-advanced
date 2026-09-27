@@ -14,29 +14,29 @@ public class FigureSupplier {
 
         switch (figureType) {
             case 0:
-                return new Square(random.nextInt(MAX_VALUE) + 1, color);
+                return new Square(color, random.nextInt(MAX_VALUE) + 1);
 
             case 1:
                 return new Rectangle(
+                        color,
                         random.nextInt(MAX_VALUE) + 1,
-                        random.nextInt(MAX_VALUE) + 1,
-                        color);
+                        random.nextInt(MAX_VALUE) + 1);
 
             case 2:
                 return new RightTriangle(
+                        color,
                         random.nextInt(MAX_VALUE) + 1,
-                        random.nextInt(MAX_VALUE) + 1,
-                        color);
+                        random.nextInt(MAX_VALUE) + 1);
 
             case 3:
-                return new Circle(random.nextInt(MAX_VALUE) + 1, color);
+                return new Circle(color, random.nextInt(MAX_VALUE) + 1);
 
             case 4:
                 return new IsoscelesTrapezoid(
+                        color,
                         random.nextInt(MAX_VALUE) + 1,
                         random.nextInt(MAX_VALUE) + 1,
-                        random.nextInt(MAX_VALUE) + 1,
-                        color);
+                        random.nextInt(MAX_VALUE) + 1);
 
             default:
                 return getDefaultFigure();
@@ -44,6 +44,6 @@ public class FigureSupplier {
     }
 
     public Figure getDefaultFigure() {
-        return new Square(10, "white");
+        return new Square("white", 10);
     }
 }
