@@ -3,40 +3,47 @@ package core.basesyntax;
 import java.util.Random;
 
 public class FigureSupplier {
+    private static final int FIGURE_COUNT = 5;
     private static final int MAX_VALUE = 10;
 
     private final ColorSupplier colorSupplier = new ColorSupplier();
     private final Random random = new Random();
 
     public Figure getRandomFigure() {
-        int figureType = random.nextInt(5);
+        int figureType = random.nextInt(FIGURE_COUNT);
         String color = colorSupplier.getRandomColor();
 
         switch (figureType) {
             case 0:
-                return new Square(color, random.nextInt(MAX_VALUE) + 1);
+                int squareSide = random.nextInt(MAX_VALUE) + 1;
+                return new Square(color, squareSide);
 
             case 1:
+                int firstRectangleSide = random.nextInt(MAX_VALUE) + 1;
+                int secondRectangleSide = random.nextInt(MAX_VALUE) + 1;
                 return new Rectangle(
                         color,
-                        random.nextInt(MAX_VALUE) + 1,
-                        random.nextInt(MAX_VALUE) + 1);
+                        firstRectangleSide,
+                        secondRectangleSide);
 
             case 2:
-                return new RightTriangle(
-                        color,
-                        random.nextInt(MAX_VALUE) + 1,
-                        random.nextInt(MAX_VALUE) + 1);
+                int firstLeg = random.nextInt(MAX_VALUE) + 1;
+                int secondLeg = random.nextInt(MAX_VALUE) + 1;
+                return new RightTriangle(color, firstLeg, secondLeg);
 
             case 3:
-                return new Circle(color, random.nextInt(MAX_VALUE) + 1);
+                int radius = random.nextInt(MAX_VALUE) + 1;
+                return new Circle(color, radius);
 
             case 4:
+                int firstBase = random.nextInt(MAX_VALUE) + 1;
+                int secondBase = random.nextInt(MAX_VALUE) + 1;
+                int height = random.nextInt(MAX_VALUE) + 1;
                 return new IsoscelesTrapezoid(
                         color,
-                        random.nextInt(MAX_VALUE) + 1,
-                        random.nextInt(MAX_VALUE) + 1,
-                        random.nextInt(MAX_VALUE) + 1);
+                        firstBase,
+                        secondBase,
+                        height);
 
             default:
                 return getDefaultFigure();
@@ -44,6 +51,6 @@ public class FigureSupplier {
     }
 
     public Figure getDefaultFigure() {
-        return new Square("white", 10);
+        return new Circle("white", 10);
     }
 }
